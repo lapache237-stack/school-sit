@@ -82,7 +82,9 @@ header {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    padding: 12px 20px;
+    padding: 12px 20px; /* Taille de clic confortable */
+    min-height: 48px; /* Hauteur minimale pour le toucher */
+    box-sizing: border-box; /* Inclut padding dans la hauteur */
     border-radius: 0 5px 5px 0;
     transition: background-color 0.3s ease, transform 0.2s ease;
     display: flex;
@@ -186,6 +188,8 @@ main {
     color: white;
     border: none;
     padding: 12px 20px;
+    min-height: 48px; /* Hauteur minimale pour le toucher */
+    box-sizing: border-box;
     border-radius: 6px;
     cursor: pointer;
     font-size: 1em;
@@ -209,7 +213,7 @@ main {
 
 /* Styles spécifiques aux résultats */
 .result-card {
-    background-color: #e8f5e9; /* Vert très clair */
+    background-color: #e8f5e9;
     border-color: #c8e6c9;
     padding: 15px 20px;
 }
@@ -221,7 +225,7 @@ main {
 }
 .result-card .status {
     font-style: italic;
-    color: #4CAF50; /* Vert */
+    color: #4CAF50;
     font-size: 0.85em;
     margin-top: 5px;
 }
@@ -233,7 +237,7 @@ main {
     padding: 25px;
     margin-bottom: 30px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    border-left: 5px solid var(--primary-color); /* Bordure par défaut */
+    border-left: 5px solid var(--primary-color);
 }
 .sport-category h3 {
     font-size: 1.8em;
@@ -324,12 +328,14 @@ main {
     color: white;
     border: none;
     padding: 15px 30px;
+    min-height: 48px; /* Hauteur minimale pour le toucher */
+    box-sizing: border-box;
     border-radius: 8px;
     cursor: pointer;
     font-size: 1.1em;
     font-weight: bold;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    display: inline-flex; /* Pour aligner l'icône et le texte */
+    display: inline-flex;
     align-items: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -353,7 +359,7 @@ footer {
     box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive Design */
+/* Responsive Design pour une interface Android-like */
 @media (max-width: 992px) {
     .title {
         font-size: 2.2em;
@@ -387,25 +393,32 @@ footer {
         margin-bottom: 5px;
     }
     .content-wrapper {
-        flex-direction: column;
+        flex-direction: column; /* La navigation passe au-dessus du contenu */
     }
     .sidebar-nav {
-        width: 100%;
+        width: 100%; /* La nav prend toute la largeur */
         padding: 10px 0;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
     .sidebar-nav ul {
         display: flex;
-        justify-content: center;
+        justify-content: space-around; /* Espacement uniforme des liens */
         flex-wrap: wrap;
+        padding: 0 10px; /* Petit padding pour les bords */
     }
     .sidebar-nav ul li {
-        margin: 5px 10px;
+        margin: 5px; /* Marge réduite entre les éléments */
+        flex-grow: 1; /* Permet aux liens de prendre l'espace disponible */
+        text-align: center;
+        min-width: 120px; /* Largeur minimale pour chaque bouton de nav */
     }
     .sidebar-nav ul li a {
-        border-radius: 5px;
-        padding: 8px 15px;
+        border-radius: 5px; /* Arrondi complet pour les boutons */
+        padding: 10px 12px; /* Ajustement du padding pour mobile */
+        min-height: 48px; /* Assure une bonne taille de clic */
         transform: none;
+        justify-content: center; /* Centre le contenu du lien */
+        font-size: 0.9em; /* Taille de police légèrement réduite */
     }
     .sidebar-nav ul li a:hover {
         transform: none;
@@ -414,13 +427,15 @@ footer {
         box-shadow: none;
     }
     main {
-        max-width: 100%;
+        max-width: 100%; /* Le contenu principal prend toute la largeur */
         margin: 15px auto;
+        padding: 15px; /* Réduit le padding du main */
     }
     .main-section h2 {
         font-size: 1.5em;
         text-align: center;
         flex-direction: column;
+        margin-bottom: 20px; /* Ajustement de la marge */
     }
     .main-section h2 .fas {
         margin-right: 0;
@@ -436,7 +451,12 @@ footer {
         margin-bottom: 10px;
     }
     .match-card button, .team-card button, .view-all-results-btn {
-        width: 100%;
+        width: 100%; /* Les boutons prennent toute la largeur */
+        padding: 12px 15px; /* Ajustement du padding */
+        font-size: 0.95em; /* Ajustement de la taille de police */
+    }
+    .match-card, .result-card, .team-card, .sport-category, .calendar-view {
+        padding: 15px; /* Réduit le padding des cartes */
     }
 }
 
@@ -444,12 +464,17 @@ footer {
     .title {
         font-size: 1.5em;
     }
-    .match-list, .results-list, .team-player-list {
-        grid-template-columns: 1fr;
-        gap: 15px;
+    .sidebar-nav ul li {
+        min-width: unset; /* Supprime la largeur minimale pour permettre plus de flexibilité */
+        flex-basis: auto; /* Permet aux éléments de s'adapter au contenu */
+        margin: 5px; /* Marge uniforme */
     }
-    .match-card, .result-card, .team-card, .sport-category, .calendar-view {
-        padding: 15px;
+    .sidebar-nav ul {
+        justify-content: center; /* Centre les éléments de nav */
+    }
+    .match-list, .results-list, .team-player-list {
+        grid-template-columns: 1fr; /* Une seule colonne */
+        gap: 15px;
     }
     .match-card h3, .match-card h4, .team-card h3 {
         font-size: 1.1em;
