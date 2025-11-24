@@ -1,0 +1,460 @@
+/* Variables CSS pour les couleurs */
+:root {
+    --primary-color: #5C6AC4; /* Bleu principal */
+    --secondary-color: #4a5bb8; /* Bleu plus foncé pour la nav */
+    --accent-color: #6a7ad4; /* Bleu clair pour les hover */
+    --text-color: #333;
+    --light-text-color: #666;
+    --bg-color: #f4f7f6;
+    --card-bg: #ffffff;
+    --border-color: #e0e0e0;
+
+    /* Couleurs par sport */
+    --football-color: #4CAF50; /* Vert */
+    --football-feminin-color: #E91E63; /* Rose */
+    --handball-color: #FF9800; /* Orange */
+    --other-sports-color: #03A9F4; /* Bleu ciel */
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    margin: 0;
+    font-size: 2.8em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title .fas {
+    margin-right: 15px;
+    font-size: 1.2em;
+}
+
+#currentTime {
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 5px;
+}
+
+.content-wrapper {
+    display: flex;
+    flex: 1;
+}
+
+.sidebar-nav {
+    background-color: var(--secondary-color);
+    padding: 20px 0;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+    width: 220px;
+    flex-shrink: 0;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-nav ul li {
+    margin-bottom: 5px;
+}
+
+.sidebar-nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 0 5px 5px 0;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar-nav ul li a:hover {
+    background-color: var(--accent-color);
+    transform: translateX(5px);
+}
+
+.sidebar-nav ul li a.active {
+    background-color: var(--primary-color);
+    box-shadow: 3px 0 8px rgba(0, 0, 0, 0.2);
+    transform: translateX(0);
+}
+
+.sidebar-nav ul li a .fas {
+    margin-right: 10px;
+}
+
+main {
+    flex-grow: 1;
+    padding: 20px;
+    max-width: calc(100% - 220px);
+    margin: 20px;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+    overflow-y: auto;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.main-section {
+    margin-bottom: 50px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.main-section:last-child {
+    border-bottom: none;
+    margin-bottom: 20px;
+}
+
+.main-section h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    font-size: 2em;
+}
+
+.main-section h2 .fas {
+    margin-right: 15px;
+    color: var(--accent-color);
+}
+
+.match-list, .results-list, .team-player-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.match-card, .result-card, .team-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.match-card:hover, .team-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.match-card h3, .match-card h4, .team-card h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+    color: var(--text-color);
+}
+
+.match-card p, .result-card p, .team-card p {
+    font-size: 0.95em;
+    color: var(--light-text-color);
+    margin-bottom: 8px;
+}
+
+.match-card button, .team-card button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    width: fit-content;
+}
+
+.match-card button:hover, .team-card button:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.match-card button .fas, .team-card button .fas {
+    margin-right: 10px;
+}
+
+/* Styles spécifiques aux résultats */
+.result-card {
+    background-color: #e8f5e9; /* Vert très clair */
+    border-color: #c8e6c9;
+    padding: 15px 20px;
+}
+.result-card .score {
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: 1.1em;
+    margin: 0 5px;
+}
+.result-card .status {
+    font-style: italic;
+    color: #4CAF50; /* Vert */
+    font-size: 0.85em;
+    margin-top: 5px;
+}
+
+/* Styles pour les catégories de sport */
+.sport-category {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border-left: 5px solid var(--primary-color); /* Bordure par défaut */
+}
+.sport-category h3 {
+    font-size: 1.8em;
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+.sport-category h3 .fas {
+    margin-right: 12px;
+}
+.sport-category p {
+    color: var(--light-text-color);
+    margin-bottom: 20px;
+}
+
+/* Couleurs par sport pour les cartes et catégories */
+.match-card.football, .team-card.football { border-left: 5px solid var(--football-color); }
+.sport-category.football { border-left-color: var(--football-color); }
+.match-card.football button { background-color: var(--football-color); }
+.match-card.football button:hover { background-color: #388E3C; }
+
+.match-card.football-feminin, .team-card.football-feminin { border-left: 5px solid var(--football-feminin-color); }
+.sport-category.football-feminin { border-left-color: var(--football-feminin-color); }
+.match-card.football-feminin button { background-color: var(--football-feminin-color); }
+.match-card.football-feminin button:hover { background-color: #C2185B; }
+
+.match-card.handball, .team-card.handball { border-left: 5px solid var(--handball-color); }
+.sport-category.handball { border-left-color: var(--handball-color); }
+.match-card.handball button { background-color: var(--handball-color); }
+.match-card.handball button:hover { background-color: #F57C00; }
+
+.match-card.other-sports, .team-card.other-sports { border-left: 5px solid var(--other-sports-color); }
+.sport-category.other-sports { border-left-color: var(--other-sports-color); }
+.match-card.other-sports button { background-color: var(--other-sports-color); }
+.match-card.other-sports button:hover { background-color: #0288D1; }
+
+
+/* Calendrier */
+.calendar-view {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+.calendar-view p {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+.calendar-view ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.calendar-view li {
+    background-color: #f9f9f9;
+    border-bottom: 1px solid var(--border-color);
+    padding: 12px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95em;
+}
+.calendar-view li:last-child {
+    border-bottom: none;
+}
+.calendar-view .date {
+    font-weight: bold;
+    color: var(--primary-color);
+    min-width: 90px;
+}
+.calendar-view .time {
+    font-style: italic;
+    color: var(--light-text-color);
+}
+
+/* Nouveau style pour le bouton "Voir tous les résultats" */
+.button-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.view-all-results-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-flex; /* Pour aligner l'icône et le texte */
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.view-all-results-btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+.view-all-results-btn .fas {
+    margin-right: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    margin-top: auto;
+    background-color: #333;
+    color: white;
+    font-size: 0.9em;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .title {
+        font-size: 2.2em;
+    }
+    .sidebar-nav {
+        width: 180px;
+    }
+    main {
+        max-width: calc(100% - 180px);
+        margin: 15px;
+    }
+    .main-section h2 {
+        font-size: 1.8em;
+    }
+    .match-list, .results-list, .team-player-list {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 15px;
+    }
+    .title {
+        font-size: 1.8em;
+        flex-direction: column;
+    }
+    .title .fas {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+    .content-wrapper {
+        flex-direction: column;
+    }
+    .sidebar-nav {
+        width: 100%;
+        padding: 10px 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .sidebar-nav ul {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .sidebar-nav ul li {
+        margin: 5px 10px;
+    }
+    .sidebar-nav ul li a {
+        border-radius: 5px;
+        padding: 8px 15px;
+        transform: none;
+    }
+    .sidebar-nav ul li a:hover {
+        transform: none;
+    }
+    .sidebar-nav ul li a.active {
+        box-shadow: none;
+    }
+    main {
+        max-width: 100%;
+        margin: 15px auto;
+    }
+    .main-section h2 {
+        font-size: 1.5em;
+        text-align: center;
+        flex-direction: column;
+    }
+    .main-section h2 .fas {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .sport-category h3 {
+        font-size: 1.5em;
+        text-align: center;
+        flex-direction: column;
+    }
+    .sport-category h3 .fas {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .match-card button, .team-card button, .view-all-results-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.5em;
+    }
+    .match-list, .results-list, .team-player-list {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    .match-card, .result-card, .team-card, .sport-category, .calendar-view {
+        padding: 15px;
+    }
+    .match-card h3, .match-card h4, .team-card h3 {
+        font-size: 1.1em;
+    }
+    .match-card p, .result-card p, .team-card p {
+        font-size: 0.85em;
+    }
+}

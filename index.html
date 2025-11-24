@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pronostics Collège - Accueil</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Intégration de Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  </head>
+  <body>
+      <header>
+          <h1 class="title"><i class="fas fa-trophy"></i> Pronostics Sportifs du Collège</h1>
+          <p id="currentTime"></p>
+      </header>
+
+      <div class="content-wrapper">
+          <nav class="sidebar-nav">
+              <ul>
+                  <li><a href="#" class="nav-link active" data-target="accueil"><i class="fas fa-home"></i> Accueil</a></li>
+                  <li><a href="#" class="nav-link" data-target="categories"><i class="fas fa-list"></i> Catégories</a></li>
+                  <li><a href="#" class="nav-link" data-target="calendrier"><i class="fas fa-calendar-alt"></i> Calendrier</a></li>
+                  <li><a href="#" class="nav-link" data-target="equipes-joueurs"><i class="fas fa-users"></i> Équipes & Joueurs</a></li>
+                  <li><a href="#" class="nav-link" data-target="all-results"><i class="fas fa-list-ol"></i> Tous les Résultats</a></li> <!-- Nouveau lien -->
+              </ul>
+          </nav>
+
+          <main>
+              <section id="accueil" class="main-section">
+                  <h2><i class="fas fa-bullhorn"></i> Aperçu des Derniers Matchs à Venir</h2>
+                  <div class="match-list upcoming-matches">
+                      <div class="match-card football">
+                          <h3>Football Masculin: Collège A vs Collège B</h3>
+                          <p>Date: 20/12/2023 - Heure: 10:00</p>
+                          <p>Lieu: Stade Principal</p>
+                          <button onclick="makePrediction('Football Masculin', 'Collège A vs Collège B')"><i class="fas fa-edit"></i> Pronostiquer</button>
+                      </div>
+                      <div class="match-card handball">
+                          <h3>Handball Féminin: Les Guerrières vs Les Furies</h3>
+                          <p>Date: 21/12/2023 - Heure: 14:30</p>
+                          <p>Lieu: Gymnase Collège</p>
+                          <button onclick="makePrediction('Handball Féminin', 'Les Guerrières vs Les Furies')"><i class="fas fa-edit"></i> Pronostiquer</button>
+                      </div>
+                      <div class="match-card football-feminin">
+                          <h3>Football Féminin: Équipe Rose vs Équipe Violette</h3>
+                          <p>Date: 22/12/2023 - Heure: 11:00</p>
+                          <p>Lieu: Terrain Annexe</p>
+                          <button onclick="makePrediction('Football Féminin', 'Équipe Rose vs Équipe Violette')"><i class="fas fa-edit"></i> Pronostiquer</button>
+                      </div>
+                  </div>
+
+                  <h2><i class="fas fa-chart-line"></i> Résultats en Temps Réel (via API Sport)</h2>
+                  <div class="results-list">
+                      <div class="result-card">
+                          <p>Football Masculin: Collège X <span class="score">2 - 1</span> Collège Y</p>
+                          <p class="status">Terminé</p>
+                      </div>
+                      <div class="result-card">
+                          <p>Handball Féminin: Les Étoiles <span class="score">15 - 12</span> Les Comètes</p>
+                          <p class="status">En cours (Mi-temps)</p>
+                      </div>
+                  </div>
+                  <div class="button-container"> <!-- Conteneur pour le nouveau bouton -->
+                      <button class="view-all-results-btn" onclick="showSection('all-results')"><i class="fas fa-eye"></i> Voir tous les résultats</button>
+                  </div>
+              </section>
+
+              <section id="categories" class="main-section hidden">
+                  <h2><i class="fas fa-cubes"></i> Catégories de Sports & Compétitions</h2>
+
+                  <div class="sport-category football">
+                      <h3><i class="fas fa-futbol"></i> Football Masculin</h3>
+                      <p>Compétitions: Interclass Masculin, Coupe du Collège</p>
+                      <div class="match-list">
+                          <div class="match-card football">
+                              <h4>Interclass: 3ème A vs 3ème B</h4>
+                              <p>Date: 20/12/2023 - Heure: 10:00</p>
+                              <button onclick="makePrediction('Football Masculin', '3ème A vs 3ème B')"><i class="fas fa-edit"></i> Pronostiquer</button>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="sport-category football-feminin">
+                      <h3><i class="fas fa-futbol"></i> Football Féminin</h3>
+                      <p>Compétitions: Interclass Féminin, Tournoi des Filles</p>
+                      <div class="match-list">
+                          <div class="match-card football-feminin">
+                              <h4>Interclass: 4ème C vs 4ème D</h4>
+                              <p>Date: 22/12/2023 - Heure: 11:00</p>
+                              <button onclick="makePrediction('Football Féminin', '4ème C vs 4ème D')"><i class="fas fa-edit"></i> Pronostiquer</button>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="sport-category handball">
+                      <h3><i class="fas fa-handball"></i> Handball Féminin</h3>
+                      <p>Compétitions: Championnat Inter-collèges, Coupe du Proviseur</p>
+                      <div class="match-list">
+                          <div class="match-card handball">
+                              <h4>Championnat: Collège Z vs Collège W</h4>
+                              <p>Date: 21/12/2023 - Heure: 14:30</p>
+                              <button onclick="makePrediction('Handball Féminin', 'Collège Z vs Collège W')"><i class="fas fa-edit"></i> Pronostiquer</button>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="sport-category other-sports">
+                      <h3><i class="fas fa-basketball-ball"></i> Autres Sports</h3>
+                      <p>Basket-ball, Volley-ball, Athlétisme...</p>
+                      <div class="match-list">
+                          <div class="match-card other-sports">
+                              <h4>Basket: 5ème E vs 5ème F</h4>
+                              <p>Date: 23/12/2023 - Heure: 09:00</p>
+                              <button onclick="makePrediction('Basket-ball', '5ème E vs 5ème F')"><i class="fas fa-edit"></i> Pronostiquer</button>
+                          </div>
+                      </div>
+                  </div>
+              </section>
+
+              <section id="calendrier" class="main-section hidden">
+                  <h2><i class="fas fa-calendar-alt"></i> Calendrier des Matchs à Venir</h2>
+                  <div class="calendar-view">
+                      <p>Décembre 2023</p>
+                      <ul>
+                          <li><span class="date">20 Déc:</span> Football M - Collège A vs Collège B <span class="time">10:00</span></li>
+                          <li><span class="date">21 Déc:</span> Handball F - Les Guerrières vs Les Furies <span class="time">14:30</span></li>
+                          <li><span class="date">22 Déc:</span> Football F - Équipe Rose vs Équipe Violette <span class="time">11:00</span></li>
+                          <li><span class="date">23 Déc:</span> Basket - 5ème E vs 5ème F <span class="time">09:00</span></li>
+                      </ul>
+                  </div>
+              </section>
+
+              <section id="equipes-joueurs" class="main-section hidden">
+                  <h2><i class="fas fa-users"></i> Fiches Équipes / Joueurs & Stats</h2>
+                  <div class="team-player-list">
+                      <div class="team-card football">
+                          <h3><i class="fas fa-shield-alt"></i> Équipe Football Masculin A</h3>
+                          <p>Coach: M. Dupont</p>
+                          <p>Joueurs Clés: Jean (Attaquant), Pierre (Défenseur)</p>
+                          <p>Stats: 5 victoires, 2 nuls, 1 défaite</p>
+                          <button><i class="fas fa-chart-bar"></i> Voir les détails</button>
+                      </div>
+                      <div class="team-card handball">
+                          <h3><i class="fas fa-shield-alt"></i> Équipe Handball Féminin Les Guerrières</h3>
+                          <p>Coach: Mme Martin</p>
+                          <p>Joueurs Clés: Léa (Gardienne), Chloé (Ailière)</p>
+                          <p>Stats: 4 victoires, 0 nuls, 2 défaites</p>
+                          <button><i class="fas fa-chart-bar"></i> Voir les détails</button>
+                      </div>
+                  </div>
+              </section>
+
+              <section id="all-results" class="main-section hidden"> <!-- Nouvelle section pour tous les résultats -->
+                  <h2><i class="fas fa-history"></i> Historique Complet des Résultats</h2>
+                  <div class="results-list full-history">
+                      <!-- Les résultats historiques seraient chargés ici par JavaScript depuis un backend -->
+                      <div class="result-card">
+                          <p>Football Masculin: Proffeseur <span class="score">2 - 1</span> Eleves</p>
+                          <p class="status">Terminé le 10/12/2023</p>
+                      </div>
+                      <div class="result-card">
+                          <p>Handball Féminin: Les Étoiles <span class="score">15 - 12</span> Les Comètes</p>
+                          <p class="status">Terminé le 09/12/2023</p>
+                      </div>
+                      <div class="result-card">
+                          <p>Football Féminin: Équipe A <span class="score">0 - 3</span> Équipe B</p>
+                          <p class="status">Terminé le 08/12/2023</p>
+                      </div>
+                      <div class="result-card">
+                          <p>Basket-ball: Les Géants <span class="score">45 - 38</span> Les Nains</p>
+                          <p class="status">Terminé le 07/12/2023</p>
+                      </div>
+                      <!-- Ajoutez plus de résultats ici -->
+                  </div>
+              </section>
+          </main>
+      </div>
+
+      <footer>
+          <p>&copy; 2023 Pronostics Collège. Tous droits réservés.</p>
+      </footer>
+
+      <script src="script.js"></script>
+  </body>
+</html>
